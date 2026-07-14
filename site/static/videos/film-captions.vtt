@@ -1,25 +1,34 @@
 WEBVTT
 
-00:00.000 --> 00:04.000
+00:00.000 --> 00:05.300
 EvoWorld: Imagine. Act. Evolve.
+Real robot footage, 5× speed.
 
-00:04.000 --> 00:11.000
-Ground the scene, route a skill, imagine actions, diagnose failures.
+00:05.300 --> 00:11.200
+Monolithic robot policies struggle to keep learning, and data stays fragmented across scenes and tasks.
+EvoWorld shares the dynamics and specializes the skills.
 
-00:11.000 --> 00:18.500
-World-model rollout: pick and place, 2× source speed.
+00:11.200 --> 00:21.400
+One loop, four moves: ground the task in a real scene, route it to an expert, imagine the outcome in the world model, and evolve from a VLM diagnosis.
 
-00:18.500 --> 00:26.000
-World-model rollout: cup reorientation, 2× source speed.
+00:21.400 --> 00:23.500
+Imagine first: world-model rollouts score candidate experts before anything moves.
 
-00:26.000 --> 00:33.500
-World-model rollout: towel wiping, 2× source speed.
+00:23.500 --> 00:29.550
+World-model rollout, 2× speed. Task: put the yellow block in the blue cup.
 
-00:33.500 --> 00:56.500
-Real Franka arm: towel manipulation, 5× recording speed.
+00:29.550 --> 00:35.550
+World-model rollout, 2× speed. Task: put the cup upright.
 
-00:56.500 --> 01:03.500
-Mean policy success: 25.9% to 44.8%. Real-robot study: 29% to 70%.
+00:35.550 --> 00:41.600
+World-model rollout, 2× speed. Task: use the white towel to wipe the table.
 
-01:03.500 --> 01:07.500
-Paper and code: doczbs.github.io/EvoWorld.
+00:41.600 --> 00:53.600
+Then act: a real Franka arm manipulates a towel. Complete 1:55 recording shown at 10× speed.
+
+00:53.600 --> 01:00.800
+Mean policy success rises from 25.9% to 44.8% across four VLA backbones (paper, Table 1).
+Real-robot success rises from 29% to 70% (5 tasks × 20 trials, rebuttal study).
+
+01:00.800 --> 01:06.000
+EvoWorld · ECCV 2026 · doczbs.github.io/EvoWorld

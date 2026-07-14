@@ -1,60 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="title" content="EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills">
-  <meta name="description" content="EvoWorld routes modular embodied skills through a world model and a VLM diagnosis loop.">
-  <meta name="keywords" content="EvoWorld, world models, VLA, robot manipulation, expert routing">
-  <meta name="author" content="Boshi Zhang, Sen Cui, BaoHuaYin, Youyi Kou, Junyu Wu, Zuo Pu, Tao Xue, Zhikang Chen, Shanshan Wei, Min Zhang, Miao Liu, Changshui Zhang, Zhang Tao">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="EvoWorld">
-  <meta property="og:description" content="World-model-centric self-evolution of modular embodied skills.">
-  <meta property="og:image" content="https://doczbs.github.io/EvoWorld/static/images/film-poster.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EvoWorld">
-  <meta name="twitter:description" content="World-model-centric self-evolution of modular embodied skills.">
-  <meta name="twitter:image" content="https://doczbs.github.io/EvoWorld/static/images/film-poster.jpg">
-  <meta name="citation_title" content="EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills">
-  <meta name="citation_author" content="Boshi Zhang">
-  <meta name="citation_author" content="Sen Cui">
-  <meta name="citation_author" content="BaoHuaYin">
-  <meta name="citation_author" content="Youyi Kou">
-  <meta name="citation_author" content="Junyu Wu">
-  <meta name="citation_author" content="Zuo Pu">
-  <meta name="citation_author" content="Tao Xue">
-  <meta name="citation_author" content="Zhikang Chen">
-  <meta name="citation_author" content="Shanshan Wei">
-  <meta name="citation_author" content="Min Zhang">
-  <meta name="citation_author" content="Miao Liu">
-  <meta name="citation_author" content="Changshui Zhang">
-  <meta name="citation_author" content="Zhang Tao">
-  <meta name="citation_publication_date" content="2026">
-  <meta name="citation_conference_title" content="ECCV">
-  <meta name="citation_pdf_url" content="static/pdfs/evoworld.pdf">
-  <title>EvoWorld | ECCV 2026</title>
-  <link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="static/css/style.css?v=20261012">
-  <script defer src="static/js/main.js?v=20261012"></script>
-<link rel="canonical" href="https://doczbs.github.io/EvoWorld/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EvoWorld · ECCV 2026</title>
+<meta name="description" content="EvoWorld: a world-model-centric framework for continuous self-evolution of modular embodied skills. ECCV 2026.">
+<meta property="og:title" content="EvoWorld · ECCV 2026">
+<meta property="og:description" content="Imagine. Act. Evolve. A shared world model, an expandable library of VLA experts, and a loop that learns from its failures.">
+<meta property="og:image" content="https://doczbs.github.io/EvoWorld/static/images/film-poster.jpg">
+<link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Lora:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="header"><nav class="wrap navigation" aria-label="Project navigation"><a class="brand" href="#top">Evo<span>World</span><span class="brand-dot" aria-hidden="true">.</span></a><div class="nav-links"><a href="#method">Method</a><a href="#demos">Demos</a><a href="#results">Results</a><a href="#citation">Cite</a></div><a class="back-link" href="https://doczbs.github.io/">Boshi Zhang ↗</a></nav></header>
+
+<header class="hero">
+  <div class="hero__chart" aria-hidden="true"><svg viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice"><path class="g" d="M0 0V1100"/><path class="g" d="M100 0V1100"/><path class="g" d="M200 0V1100"/><path class="g" d="M300 0V1100"/><path class="g" d="M400 0V1100"/><path class="g" d="M500 0V1100"/><path class="g" d="M600 0V1100"/><path class="g" d="M700 0V1100"/><path class="g" d="M800 0V1100"/><path class="g" d="M900 0V1100"/><path class="g" d="M1000 0V1100"/><path class="g" d="M1100 0V1100"/><path class="g" d="M1200 0V1100"/><path class="g" d="M1300 0V1100"/><path class="g" d="M1400 0V1100"/><path class="g" d="M1500 0V1100"/><path class="g" d="M1600 0V1100"/><path class="g" d="M0 0H1600"/><path class="g" d="M0 100H1600"/><path class="g" d="M0 200H1600"/><path class="g" d="M0 300H1600"/><path class="g" d="M0 400H1600"/><path class="g" d="M0 500H1600"/><path class="g" d="M0 600H1600"/><path class="g" d="M0 700H1600"/><path class="g" d="M0 800H1600"/><path class="g" d="M0 900H1600"/><path class="g" d="M0 1000H1600"/><path class="g" d="M0 1100H1600"/><path class="r1" d="M1420 160L3820 160"/><path class="r2" d="M1420 160L3637 1078"/><path class="r2" d="M1420 160L3117 1857"/><path class="r2" d="M1420 160L2338 2377"/><path class="r1" d="M1420 160L1420 2560"/><path class="r2" d="M1420 160L502 2377"/><path class="r2" d="M1420 160L-277 1857"/><path class="r2" d="M1420 160L-797 1078"/><path class="r1" d="M1420 160L-980 160"/><path class="r2" d="M1420 160L-797 -758"/><path class="r2" d="M1420 160L-277 -1537"/><path class="r2" d="M1420 160L502 -2057"/><path class="r1" d="M1420 160L1420 -2240"/><path class="r2" d="M1420 160L2338 -2057"/><path class="r2" d="M1420 160L3117 -1537"/><path class="r2" d="M1420 160L3637 -758"/><circle class="ring" cx="1420" cy="160" r="110"/><circle class="ring" cx="1420" cy="160" r="88"/><path class="r1" d="M160 520L2560 520"/><path class="r2" d="M160 520L2377 1438"/><path class="r2" d="M160 520L1857 2217"/><path class="r2" d="M160 520L1078 2737"/><path class="r1" d="M160 520L160 2920"/><path class="r2" d="M160 520L-758 2737"/><path class="r2" d="M160 520L-1537 2217"/><path class="r2" d="M160 520L-2057 1438"/><path class="r1" d="M160 520L-2240 520"/><path class="r2" d="M160 520L-2057 -398"/><path class="r2" d="M160 520L-1537 -1177"/><path class="r2" d="M160 520L-758 -1697"/><path class="r1" d="M160 520L160 -1880"/><path class="r2" d="M160 520L1078 -1697"/><path class="r2" d="M160 520L1857 -1177"/><path class="r2" d="M160 520L2377 -398"/><circle class="ring" cx="160" cy="520" r="90"/><circle class="ring" cx="160" cy="520" r="72"/></svg></div>
+  <div class="wrap">
+    <nav class="nav" aria-label="Sections">
+      <a class="nav__brand" href="#top">EvoWorld</a>
+      <div class="nav__links"><a href="#film">Film</a><a href="#method">Method</a><a href="#demos">Demos</a><a href="#results">Results</a><a href="#bibtex">BibTeX</a></div>
+      <a class="nav__home" href="https://doczbs.github.io/">Boshi Zhang ↗</a>
+    </nav>
+    <div class="hero__head" id="top">
+      <span class="venue mono"><i></i>ECCV 2026</span>
+      <h1>EvoWorld</h1>
+      <p class="hero__motto">Imagine. Act. Evolve.</p>
+      <p class="hero__title">A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills</p>
+      <p class="authors">
+        <span><a href="https://doczbs.github.io/">Boshi Zhang</a><sup>*1</sup>,</span>
+        <span>Sen Cui<sup>*‡1</sup>,</span>
+        <span>BaoHuaYin<sup>3</sup>,</span>
+        <span>Youyi Kou<sup>4</sup>,</span>
+        <span>Junyu Wu<sup>5</sup>,</span>
+        <span>Zuo Pu<sup>1</sup>,</span>
+        <span>Tao Xue<sup>1</sup>,</span>
+        <span>Zhikang Chen<sup>2</sup>,</span>
+        <span>Shanshan Wei<sup>1</sup>,</span>
+        <span>Min Zhang<sup>6</sup>,</span>
+        <span>Miao Liu<sup>1</sup>,</span>
+        <span>Changshui Zhang<sup>†1</sup>,</span>
+        <span>Zhang Tao<sup>†1</sup></span>
+      </p>
+      <p class="affils"><sup>1</sup>Tsinghua University · <sup>2</sup>University of Oxford · <sup>3</sup>University of Sussex · <sup>4</sup>Beijing Jiaotong University · <sup>5</sup>Xiamen University · <sup>6</sup>East China Normal University</p>
+      <p class="notes">* Equal contribution · ‡ Project leader · † Corresponding authors</p>
+      <div class="actions">
+        <a class="btn btn--gold" href="static/pdfs/evoworld.pdf"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Paper</a>
+        <a class="btn" href="https://github.com/DocZbs/EvoWorld"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.3 5.8 2.6 5.8 2.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>Code</a>
+        <a class="btn" href="#film"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Film</a>
+        <a class="btn" href="#bibtex"><svg viewBox="0 0 24 24"><path d="M8 7h8M8 12h8M8 17h5"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>BibTeX</a>
+      </div>
+    </div>
+    <figure class="film" id="film">
+      <div class="film__frame">
+        <video id="film-video" controls playsinline preload="metadata" poster="static/images/film-poster.jpg" aria-label="EvoWorld research film, 66 seconds, no audio">
+          <source src="static/videos/evoworld-film.mp4" type="video/mp4">
+          <track kind="captions" src="static/videos/film-captions.vtt" srclang="en" label="English">
+        </video>
+      </div>
+      <figcaption class="film__cap"><span>The research film · 1:06 · 1080p · no audio, captions available</span><a href="static/videos/evoworld-film.mp4">Open video ↗</a></figcaption>
+    </figure>
+  </div>
+</header>
+
 <main id="main">
-<section class="hero wrap" id="top"><div class="hero-topline"><span class="eyebrow">ECCV 2026 · POSTER</span><span class="eyebrow muted">EMBODIED INTELLIGENCE / WORLD MODELS</span></div><div class="hero-grid"><div class="hero-copy"><h1>Evo<span>World</span></h1><h2>Imagine.<br>Act. <em>Evolve.</em></h2><p class="thesis">A shared world model.<br>An expanding library of robot skills.<br>A loop that learns from its failures.</p><div class="actions"><a class="button primary" href="static/pdfs/evoworld.pdf">Read paper ↗</a><a class="button" href="https://github.com/DocZbs/EvoWorld">Code ↗</a></div></div><figure class="hero-video"><div class="media-label"><span>THE RESEARCH FILM</span><span>01:08 · 1080P</span></div><video id="research-film" controls playsinline preload="metadata" poster="static/images/film-poster.jpg" aria-label="EvoWorld research film, with on-screen explanations and no audio"><source src="static/videos/evoworld-film.mp4" type="video/mp4"><track kind="captions" src="static/videos/film-captions.vtt" srclang="en" label="English descriptions">Your browser does not support embedded video. <a href="static/videos/evoworld-film.mp4">Download the research film</a>.</video><figcaption><span>From imagined rollouts to real-robot execution.</span><a href="static/videos/evoworld-film.mp4" download>Download film ↓</a></figcaption></figure></div>
-<div class="paper-credit"><p class="paper-title">A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills</p><details class="author-details"><summary><strong>Boshi Zhang*</strong>, <strong>Sen Cui*</strong>, et al. <span>All authors & affiliations +</span></summary><div class="author-content"><p class="authors">
-          Boshi Zhang<sup>*1</sup>, Sen Cui<sup>*,&#8225;1</sup>, BaoHuaYin<sup>3</sup>, Youyi Kou<sup>4</sup>, Junyu Wu<sup>5</sup>, Zuo Pu<sup>1</sup>, Tao Xue<sup>1</sup>, Zhikang Chen<sup>2</sup>, Shanshan Wei<sup>1</sup>, Min Zhang<sup>6</sup>, Miao Liu<sup>1</sup>, Changshui Zhang<sup>&#8224;1</sup>, Zhang Tao<sup>&#8224;1</sup>
-        </p><p class="affiliations">
-          <sup>1</sup>Tsinghua University &nbsp; <sup>2</sup>University of Oxford &nbsp; <sup>3</sup>University of Sussex &nbsp; <sup>4</sup>Beijing Jiaotong University &nbsp; <sup>5</sup>Xiamen University &nbsp; <sup>6</sup>East China Normal University
-        </p><p>* Equal contribution. ‡ Project leader. † Corresponding authors.</p></div></details></div>
-<details class="transcript"><summary>Film transcript & playback notes +</summary><p><strong>00:00–00:11</strong> Shared world dynamics; scene anchoring, expert routing, imagination, and targeted diagnosis.<br><strong>00:11–00:33.5</strong> Three selected world-model rollouts: pick-and-place, cup reorientation, and towel wiping. Each is shown at 2× source playback speed.<br><strong>00:33.5–00:56.5</strong> A real Franka-arm towel-manipulation recording at 5× speed.<br><strong>00:56.5–01:07.5</strong> Reported success rates and project links. The film has on-screen text and no audio; these examples are qualitative, not a complete evaluation set.</p></details>
-</section>
-<section class="metric-band"><div class="wrap metric-grid"><div><span class="metric-label">MEAN POLICY SUCCESS</span><strong><span>25.9</span> → 44.8<small>%</small></strong><p>Four VLA backbones · Table 1</p></div><div><span class="metric-label">REAL-ROBOT SUCCESS</span><strong><span>29</span> → 70<small>%</small></strong><p>Five tasks · 20 trials per task</p></div><div><span class="metric-label">MODULAR BY DESIGN</span><strong>4 <small>backbones</small></strong><p>GR00T-N1.6 · π₀.₅ · π₀ · π₀-FAST</p></div></div></section>
-<section class="section wrap" id="method"><div class="section-heading"><div><p class="eyebrow">THE IDEA</p><h2>Shared dynamics.<br><em>Specialized skills.</em></h2></div><p>Keep world knowledge reusable. Route each task to a suitable expert, imagine the outcome, and update only what needs to change.</p></div><ol class="method-steps"><li><span>01 / GROUND</span><h3>Start from a real scene.</h3><p>Anchor generated tasks to recorded observations.</p></li><li><span>02 / ROUTE</span><h3>Choose the right expert.</h3><p>Select a modular VLA policy for the scene and task.</p></li><li><span>03 / IMAGINE</span><h3>Test actions in a world model.</h3><p>Predict consequences before physical execution.</p></li><li><span>04 / EVOLVE</span><h3>Learn from the diagnosis.</h3><p>Use VLM feedback to refine the model, router, or skill.</p></li></ol><a class="method-figure" href="static/images/method.png" aria-label="Open the full-resolution EvoWorld method diagram"><img src="static/images/method.png" width="1600" height="750" loading="lazy" alt="EvoWorld pipeline: task generation, contextual scene anchoring, routing, imaginative simulation and VLM diagnosis"></a><p class="figure-note">The complete loop · Select the diagram to view full resolution ↗</p></section>
-<section class="demo-section" id="demos"><div class="wrap section"><div class="section-heading"><div><p class="eyebrow">SEE IT IN MOTION</p><h2>Imagine first.<br><em>Then act.</em></h2></div><p>Selected qualitative examples. World-model videos and physical robot footage are labeled separately.</p></div><div class="real-demo"><video controls playsinline preload="none" poster="static/images/real-poster.jpg" aria-label="Real Franka-arm towel manipulation at five times recording speed"><source src="static/videos/real-towel-5x.mp4" type="video/mp4"></video><div><span class="tag">REAL ROBOT · 5× SPEED</span><h3>Towel manipulation.</h3><p>A complete 115-second recording, condensed to 23 seconds. Watch the gripper establish contact, lift the fabric, and reposition the towel.</p><a class="text-link" href="static/videos/real-towel-5x.mp4">Open video ↗</a><p class="media-note">Franka arm · Selected execution · No audio</p></div></div><div class="demo-grid"><figure><video controls playsinline preload="none" poster="static/images/rollout-pick.jpg" aria-label="World-model rollout: Pick & place, original playback speed"><source src="static/videos/rollout-pick.mp4" type="video/mp4"></video><figcaption><span>WORLD-MODEL ROLLOUT · 1×</span><h3>Pick & place</h3><p>Two external views + wrist view</p></figcaption></figure><figure><video controls playsinline preload="none" poster="static/images/rollout-reorient.jpg" aria-label="World-model rollout: Reorientation, original playback speed"><source src="static/videos/rollout-reorient.mp4" type="video/mp4"></video><figcaption><span>WORLD-MODEL ROLLOUT · 1×</span><h3>Reorientation</h3><p>Two external views + wrist view</p></figcaption></figure><figure><video controls playsinline preload="none" poster="static/images/rollout-wipe.jpg" aria-label="World-model rollout: Deformable manipulation, original playback speed"><source src="static/videos/rollout-wipe.mp4" type="video/mp4"></video><figcaption><span>WORLD-MODEL ROLLOUT · 1×</span><h3>Deformable manipulation</h3><p>Two external views + wrist view</p></figcaption></figure></div></div></section>
-<section class="section wrap" id="results"><div class="section-heading"><div><p class="eyebrow">EVIDENCE</p><h2>Improvement,<br><em>across experts.</em></h2></div><p>Mean success rises by <strong>18.9 percentage points</strong> across four backbones. Results below separate the paper’s policy evaluation from the real-robot rebuttal study.</p></div><div class="results-grid"><article class="result-panel"><div class="panel-heading"><h3>Policy success rate</h3><span>TABLE 1 · FIVE SKILL FAMILIES</span></div><div class="legend"><span class="base-key">Base</span><span class="evo-key">EvoWorld</span></div><div class="bar-row"><span class="backbone">GR00T-N1.6</span><div class="bars"><div class="bar base" style="--value:46.080000000000005%"><span>25.6%</span></div><div class="bar evo" style="--value:84.24%"><span>46.8%</span></div></div></div><div class="bar-row"><span class="backbone">π₀.₅</span><div class="bars"><div class="bar base" style="--value:41.76%"><span>23.2%</span></div><div class="bar evo" style="--value:74.16000000000001%"><span>41.2%</span></div></div></div><div class="bar-row"><span class="backbone">π₀</span><div class="bars"><div class="bar base" style="--value:51.12%"><span>28.4%</span></div><div class="bar evo" style="--value:82.8%"><span>46.0%</span></div></div></div><div class="bar-row"><span class="backbone">π₀-FAST</span><div class="bars"><div class="bar base" style="--value:47.519999999999996%"><span>26.4%</span></div><div class="bar evo" style="--value:81.36000000000001%"><span>45.2%</span></div></div></div><p class="figure-note">Average across S1–S5; values are percentages. Relative gains range from +62.0% to +82.8%.</p></article><article class="result-panel hardware"><div class="panel-heading"><h3>On real hardware</h3><span>REBUTTAL STUDY</span></div><div class="hardware-number"><span>29%</span><span aria-hidden="true">→</span><strong>70%</strong></div><p>Five Franka tasks, 20 trials per task.<br>GR00T-N1.6 backbone.</p><img src="static/images/real_world_sr.png" width="1000" height="620" loading="lazy" alt="Per-task real robot success rates for the base policy and EvoWorld"></article></div><details class="research-details"><summary>Full benchmark tables & additional results <span aria-hidden="true">+</span></summary><div class="details-body"><div class="table-wrap result-table">
-          <table>
+  <div class="wrap stats">
+    <div class="stats__grid">
+      <div class="stat"><div class="stat__v"><span class="from">25.9</span><span class="arrow">→</span>44.8%</div><div class="stat__l">Mean policy success</div><div class="stat__s">Four VLA backbones, five skill families · Table 1</div></div>
+      <div class="stat"><div class="stat__v"><span class="from">29</span><span class="arrow">→</span>70%</div><div class="stat__l">Real-robot success</div><div class="stat__s">Franka arm, 5 tasks × 20 trials · rebuttal study</div></div>
+      <div class="stat"><div class="stat__v">4</div><div class="stat__l">Plug-in VLA experts</div><div class="stat__s">GR00T-N1.6 · π₀.₅ · π₀ · π₀-FAST</div></div>
+    </div>
+  </div>
+
+  <section class="block wrap" id="abstract" aria-labelledby="h-abs">
+    <p class="kicker mono">Abstract</p>
+    <h2 id="h-abs">Share the dynamics. <em>Specialize the skills.</em></h2>
+    <div class="abstract">
+      <p>Current progress in physical intelligence largely relies on scaling monolithic Vision-Language-Action (VLA) models, yet real-world policy data remain fragmented across scenes and tasks. This mismatch limits transfer, exacerbates catastrophic forgetting, and impedes continual improvement. A modular design that shares dynamics while specializing skills is therefore a promising paradigm.</p>
+      <p>We introduce EvoWorld (EvoW), a world-model-centric framework for skill orchestration and iterative self-evolution. VLAs form an expandable library of pluggable experts. A high-level router selects experts conditioned on scene and task, while an action-conditioned video world model serves as the cognitive core for rollout-based planning. A vision-language evaluator delivers semantic scoring and diagnostic tags, enabling targeted updates to the world model, router memory, or specific experts rather than global retraining.</p>
+      <div class="keywords"><span>Vision-Language-Action models</span><span>World models</span><span>Expert routing</span><span>Robot manipulation</span><span>Continual skill refinement</span></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="method" aria-labelledby="h-method">
+    <p class="kicker mono">Method</p>
+    <h2 id="h-method">One loop. <em>Four moves.</em></h2>
+    <p class="lede">Every task passes through the same closed loop. Select a step to see what happens there.</p>
+    <div class="loop">
+      <svg viewBox="-230 -230 460 460" role="group" aria-label="The EvoWorld loop">
+        <circle class="ring" r="160"/>
+        <circle class="arc" r="160" id="loop-arc" transform="rotate(-90)" stroke-dasharray="251 1005"/>
+        <circle class="core" r="78"/>
+        <text class="core-t" text-anchor="middle" y="-4">Shared</text>
+        <text class="core-t" text-anchor="middle" y="22">world model</text>
+        <g class="node on" data-step="0" transform="translate(0,-160)" tabindex="0" role="button" aria-label="Step 1: Ground"><circle r="30"/><text text-anchor="middle" y="5">01</text></g>
+        <g class="node" data-step="1" transform="translate(160,0)" tabindex="0" role="button" aria-label="Step 2: Route"><circle r="30"/><text text-anchor="middle" y="5">02</text></g>
+        <g class="node" data-step="2" transform="translate(0,160)" tabindex="0" role="button" aria-label="Step 3: Imagine"><circle r="30"/><text text-anchor="middle" y="5">03</text></g>
+        <g class="node" data-step="3" transform="translate(-160,0)" tabindex="0" role="button" aria-label="Step 4: Evolve"><circle r="30"/><text text-anchor="middle" y="5">04</text></g>
+        <text class="lab" text-anchor="middle" y="-206">GROUND</text>
+        <text class="lab" x="206" y="5" text-anchor="middle" transform="rotate(90 206 0)">ROUTE</text>
+        <text class="lab" text-anchor="middle" y="216">IMAGINE</text>
+        <text class="lab" x="-206" y="5" text-anchor="middle" transform="rotate(-90 -206 0)">EVOLVE</text>
+      </svg>
+      <div class="step-card" aria-live="polite">
+        <span class="num mono" id="step-num">01 · Ground</span>
+        <h3 id="step-title">Start from a real scene.</h3>
+        <p id="step-text">A task description is matched against an offline repository of real-robot recordings with CLIP embeddings, and a grounded initial state is sampled, so every generated task begins in a scene the robot has actually seen.</p>
+        <p class="upd" id="step-upd">Output: a grounded state o₀ for the task ℓ.</p>
+        <div class="step-nav"><button type="button" id="step-prev" aria-label="Previous step">← Prev</button><button type="button" id="step-next" aria-label="Next step">Next →</button></div>
+      </div>
+    </div>
+    <figure class="figure">
+      <a href="static/images/method.png"><img src="static/images/method.png" width="1800" height="1012" loading="lazy" alt="EvoWorld pipeline: task generation, contextual scene anchoring, strategic routing and imaginative simulation, VLM diagnosis and recursive evolution"></a>
+      <figcaption>The full pipeline: (1) task generation, (2) contextual scene anchoring, (3) strategic routing and imaginative simulation, (4) VLM diagnosis and recursive evolution. Select to open full resolution.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block wrap" id="demos" aria-labelledby="h-demos">
+    <p class="kicker mono">Demos</p>
+    <h2 id="h-demos">Imagine first. <em>Then act.</em></h2>
+    <p class="lede">Generated world-model rollouts and physical robot footage are shown separately and labeled.</p>
+    <div class="tabs" role="tablist" aria-label="Demo type">
+      <button type="button" role="tab" id="tab-wm" aria-controls="panel-wm" aria-selected="true">World-model rollouts</button>
+      <button type="button" role="tab" id="tab-real" aria-controls="panel-real" aria-selected="false">Real robot</button>
+    </div>
+
+    <div class="panel" id="panel-wm" role="tabpanel" aria-labelledby="tab-wm">
+      <div class="rollouts">
+        <article class="roll">
+          <div><video controls muted loop playsinline preload="none" poster="static/images/rollout-pick.jpg" data-auto aria-label="World-model rollout: pick and place"><source src="static/videos/rollout-pick.mp4" type="video/mp4"></video><div class="views mono"><span>View 1</span><span>View 2</span><span>Wrist</span></div></div>
+          <div><span class="tag mono">S1 · Pick &amp; place</span><h3>Pick &amp; place</h3><p class="ins">“Put the yellow block in the blue cup.”</p><p class="meta">World-model rollout · 1× · generated video</p></div>
+        </article>
+        <article class="roll">
+          <div><video controls muted loop playsinline preload="none" poster="static/images/rollout-reorient.jpg" data-auto aria-label="World-model rollout: reorientation"><source src="static/videos/rollout-reorient.mp4" type="video/mp4"></video><div class="views mono"><span>View 1</span><span>View 2</span><span>Wrist</span></div></div>
+          <div><span class="tag mono">S3 · Reorientation</span><h3>Reorientation</h3><p class="ins">“Put the cup upright.”</p><p class="meta">World-model rollout · 1× · generated video</p></div>
+        </article>
+        <article class="roll">
+          <div><video controls muted loop playsinline preload="none" poster="static/images/rollout-wipe.jpg" data-auto aria-label="World-model rollout: deformable manipulation"><source src="static/videos/rollout-wipe.mp4" type="video/mp4"></video><div class="views mono"><span>View 1</span><span>View 2</span><span>Wrist</span></div></div>
+          <div><span class="tag mono">S4 · Deformable</span><h3>Deformable manipulation</h3><p class="ins">“Use the white towel to wipe the table.”</p><p class="meta">World-model rollout · 1× · generated video</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-real" role="tabpanel" aria-labelledby="tab-real" hidden>
+      <div class="real">
+        <div class="real__video">
+          <video controls playsinline preload="none" poster="static/images/real-poster.jpg" aria-label="Real Franka arm towel manipulation at five times speed"><source src="static/videos/real-towel-5x.mp4" type="video/mp4"></video>
+          <h3>Towel manipulation</h3>
+          <p>Franka arm · complete 115-second recording at 5× speed · no audio</p>
+        </div>
+        <div>
+          <ul class="tasks" id="tasks"></ul>
+          <p class="note-s">Success rate per task, base GR00T-N1.6 policy vs. with EvoWorld, 20 trials each (rebuttal study).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="results" aria-labelledby="h-results">
+    <p class="kicker mono">Results</p>
+    <h2 id="h-results">Better skills, <em>every backbone.</em></h2>
+    <p class="lede">Mean success rises by 18.9 percentage points across four VLA backbones, with relative gains from +62.0% to +82.8%.</p>
+    <div class="results">
+      <article class="card">
+        <h3>Per-skill success</h3>
+        <p class="sub">Table 1 · five skill families · choose a backbone</p>
+        <div class="pills" role="group" aria-label="Backbone" id="bb-pills"></div>
+        <div class="legend"><span><i style="background:var(--base-bar)"></i>Base</span><span><i style="background:var(--gold)"></i>With EvoWorld</span></div>
+        <div class="chart" id="skill-chart"></div>
+        <div class="chart-foot"><span id="bb-avg"></span><span id="bb-gain"></span></div>
+      </article>
+      <article class="card avg">
+        <h3>Average across skills</h3>
+        <p class="sub">All four backbones</p>
+        <div class="chart" id="avg-chart"></div>
+        <div class="headline"><span>25.9% →</span> 44.8%</div>
+        <p class="sub">Mean over the four backbones</p>
+      </article>
+    </div>
+
+    <details class="more">
+      <summary>Full benchmark tables &amp; additional figures</summary>
+      <div class="more__body">
+        <div class="table-wrap"><table>
             <caption>Policy success rates across five representative skill families and four VLA backbones. EvoW* denotes our method.</caption>
             <thead>
               <tr>
@@ -155,9 +286,8 @@
                 <td>+71.2%</td>
               </tr>
             </tbody>
-          </table>
-        </div><div class="table-wrap diversity-table">
-          <table>
+          </table></div>
+        <div class="table-wrap" style="margin-top:24px"><table>
             <caption>Task and scene diversity under executability constraints. Lower is better for similarity metrics; bold marks the best value in each row.</caption>
             <thead>
               <tr>
@@ -223,12 +353,36 @@
                 <td>0.932</td>
               </tr>
             </tbody>
-          </table>
-        </div><div class="supplement-grid"><figure><img src="static/images/sr_stage_heatmaps.png" width="1400" height="600" loading="lazy" alt="Success rates at base, routing and post-training stages"><figcaption>Stage-wise success rates.</figcaption></figure><figure><img src="static/images/policy_improvement.png" width="1200" height="600" loading="lazy" alt="Policy success over refinement iterations"><figcaption>Iterative policy improvement.</figcaption></figure><figure><img src="static/images/compositional_radar.png" width="1000" height="800" loading="lazy" alt="Compositional task success"><figcaption>Long-horizon composition.</figcaption></figure><figure><img src="static/images/generative_quality_bars.png" width="1200" height="650" loading="lazy" alt="FID and FVD generation metrics"><figcaption>Generative fidelity.</figcaption></figure><figure><img src="static/images/generation_quality.png" width="1400" height="800" loading="lazy" alt="Visual comparison of temporal consistency"><figcaption>Temporal consistency.</figcaption></figure></div></div></details></section>
-<section class="citation-section" id="citation"><div class="wrap section citation-grid"><div><p class="eyebrow">BUILD ON THIS WORK</p><h2>Keep the<br><em>loop going.</em></h2><div class="actions"><a class="button primary" href="static/pdfs/evoworld.pdf">Paper ↗</a><a class="button" href="https://github.com/DocZbs/EvoWorld">Code ↗</a></div></div><div class="citation-box"><div class="citation-header"><span>BIBTEX</span><button type="button" id="copy-citation">Copy citation</button></div><pre id="bibtex">@inproceedings{zhang2026evoworld,
+          </table></div>
+        <div class="gallery">
+          <figure><img src="static/images/sr_stage_heatmaps.png" width="1400" height="600" loading="lazy" alt="Success rates at base, routing and post-training stages"><figcaption>Stage-wise success rates.</figcaption></figure>
+          <figure><img src="static/images/policy_improvement.png" width="1800" height="357" loading="lazy" alt="Policy success over refinement iterations"><figcaption>Iterative policy improvement.</figcaption></figure>
+          <figure><img src="static/images/compositional_radar.png" width="1800" height="987" loading="lazy" alt="Compositional task success"><figcaption>Long-horizon composition.</figcaption></figure>
+          <figure><img src="static/images/generative_quality_bars.png" width="1200" height="650" loading="lazy" alt="FID and FVD generation metrics"><figcaption>Generative fidelity.</figcaption></figure>
+          <figure><img src="static/images/generation_quality.png" width="1400" height="800" loading="lazy" alt="Visual comparison of temporal consistency"><figcaption>Temporal consistency.</figcaption></figure>
+          <figure><img src="static/images/real_world_sr.png" width="706" height="530" loading="lazy" alt="Per-task real robot success rates for the base policy and EvoWorld"><figcaption>Real-robot success per task.</figcaption></figure>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="block wrap" id="bibtex" aria-labelledby="h-bib">
+    <p class="kicker mono">Citation</p>
+    <h2 id="h-bib">Build on <em>this work.</em></h2>
+    <div class="cite">
+      <button type="button" id="copy">Copy</button>
+<pre id="bib">@inproceedings{zhang2026evoworld,
   title={EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills},
   author={Boshi Zhang and Sen Cui and {BaoHuaYin} and Youyi Kou and Junyu Wu and Zuo Pu and Tao Xue and Zhikang Chen and Shanshan Wei and Min Zhang and Miao Liu and Changshui Zhang and {Zhang Tao}},
   booktitle={European Conference on Computer Vision},
   year={2026}
-}</pre><p id="copy-status" role="status" aria-live="polite"></p></div></div></section>
-</main><footer class="wrap footer"><a class="brand" href="#top">Evo<span>World</span>.</a><span>ECCV 2026 · Tsinghua University & collaborators</span><a href="https://doczbs.github.io/">Boshi Zhang ↗</a></footer></body></html>
+}</pre>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>EvoWorld · ECCV 2026 · Tsinghua University &amp; collaborators</span><a href="https://doczbs.github.io/">Boshi Zhang's homepage ↗</a></div></footer>
+
+<script src="static/js/main.js"></script>
+</body>
+</html>

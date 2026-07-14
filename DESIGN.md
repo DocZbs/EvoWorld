@@ -55,3 +55,6 @@ The film uses user-local EvoWorld recordings, not synthesized robot footage. Gen
 
 ## Verification
 Run the existing site release tests, syntax check, premium audit, desktop/mobile screenshots, playback and seeking, keyboard disclosures, clipboard success/failure, reduced motion, and deployment. The site-only Pages workflow remains the deployment owner.
+
+## User-supplied October 2026 revision (current)
+The owner's `EvoWorld-update/site` replaces the earlier visual direction: dark film-first hero, Lora display type, Source Sans 3 body, IBM Plex Mono utility, gold accents, warm paper and system dark mode. `site/static/css/style.css :root` and its theme overrides are now the canonical tokens, superseding the earlier frontmatter palette and spacing. The new owner-supplied film is 66 seconds with a matching poster and VTT captions. Existing PDF, diagrams and individual rollouts remain available. The method loop, demo tabs and backbone result selector are interactive. Native rollout controls allow pausing motion, and tabs support arrow/Home/End keyboard navigation.
