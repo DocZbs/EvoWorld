@@ -22,3 +22,7 @@ outputs/
 *.mp4
 *.webm
 *.gif
+
+# Published, edited research demonstrations (source recordings remain local).
+!site/static/videos/*.mp4
+.DS_Store

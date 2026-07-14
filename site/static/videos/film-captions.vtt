@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00.000 --> 00:04.000
+EvoWorld: Imagine. Act. Evolve.
+
+00:04.000 --> 00:11.000
+Ground the scene, route a skill, imagine actions, diagnose failures.
+
+00:11.000 --> 00:18.500
+World-model rollout: pick and place, 2× source speed.
+
+00:18.500 --> 00:26.000
+World-model rollout: cup reorientation, 2× source speed.
+
+00:26.000 --> 00:33.500
+World-model rollout: towel wiping, 2× source speed.
+
+00:33.500 --> 00:56.500
+Real Franka arm: towel manipulation, 5× recording speed.
+
+00:56.500 --> 01:03.500
+Mean policy success: 25.9% to 44.8%. Real-robot study: 29% to 70%.
+
+01:03.500 --> 01:07.500
+Paper and code: doczbs.github.io/EvoWorld.
