@@ -1,0 +1,23 @@
+schema_version = 1
+seed = 7
+run_root = "../artifacts/runs"
+mode = "dry_run"
+grounding_mode = "nearest"
+grounding_temperature = 0.5
+router_weight = 0.25
+reliability_threshold = 0.7
+rollout_horizon = 10
+
+[[experts]]
+expert_id = "pi05"
+backend = "openpi"
+task_families = ["manipulation"]
+action_schema = "joint_velocity"
+enabled = true
+
+[[experts]]
+expert_id = "groot_n16"
+backend = "groot"
+task_families = ["manipulation"]
+action_schema = "joint_velocity"
+enabled = true

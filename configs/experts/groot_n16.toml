@@ -1,0 +1,13 @@
+[groot_n16]
+base_model_path = "nvidia/GR00T-N1.6-3B"
+embodiment_tag = "NEW_EMBODIMENT"
+modality_config_path = "meta/evoworld_modality.py"
+num_gpus = 8
+global_batch_size = 64
+max_steps = 5000
+save_steps = 1000
+save_total_limit = 5
+dataloader_num_workers = 2
+action_horizon = 16
+open_loop_steps = 400
+trajectory_ids = [0]

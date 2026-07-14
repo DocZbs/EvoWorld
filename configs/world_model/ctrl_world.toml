@@ -1,0 +1,5 @@
+[ctrl_world]
+revision = "99fb20683fd79dfa6d0c6feb9d49c6c55eecd50d"
+max_train_steps = 5000
+world_size = 1
+annotation_name = "annotation"

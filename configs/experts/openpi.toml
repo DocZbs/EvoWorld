@@ -1,0 +1,35 @@
+[pi05]
+upstream_config_name = "pi05_droid_finetune"
+generated_name = "evoworld_pi05"
+action_dimension = 32
+horizon = 15
+batch_size = 16
+steps = 5000
+workers = 8
+shuffle = false
+storage_chunk = "chunk-000"
+action_representation = "joint_velocity"
+
+[pi0]
+upstream_config_name = "pi0_libero"
+generated_name = "evoworld_pi0"
+horizon = 10
+batch_size = 8
+steps = 5000
+workers = 8
+shuffle = false
+storage_chunk = "chunk-000"
+action_representation = "joint_velocity"
+
+[pi0_fast]
+upstream_config_name = "pi0_fast_libero"
+generated_name = "evoworld_pi0_fast"
+action_dimension = 8
+horizon = 10
+batch_size = 8
+max_tokens = 180
+steps = 5000
+workers = 8
+shuffle = false
+storage_chunk = "chunk-000"
+action_representation = "joint_velocity"

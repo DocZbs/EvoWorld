@@ -1,0 +1,9 @@
+# Copy this file outside the checkout, then replace every /replace/with path.
+# Relative paths are resolved from the copied configuration's directory.
+[finetune]
+job_root = "/replace/with/job-root"
+recipe_config = "/replace/with/EvoWorld/configs/experts/openpi.toml"
+manifest = "/replace/with/data/training-manifest.json"
+dataset_root = "/replace/with/data/lerobot-v2.1"
+output_root = "/replace/with/output/pi05"
+backend_root = "/replace/with/EvoWorld/third_party/openpi"

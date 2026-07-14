@@ -1,0 +1,9 @@
+[submodule "third_party/ctrl_world"]
+	path = third_party/ctrl_world
+	url = https://github.com/Robert-gyj/Ctrl-World.git
+[submodule "third_party/openpi"]
+	path = third_party/openpi
+	url = https://github.com/Physical-Intelligence/openpi.git
+[submodule "third_party/isaac_groot"]
+	path = third_party/isaac_groot
+	url = https://github.com/NVIDIA/Isaac-GR00T.git

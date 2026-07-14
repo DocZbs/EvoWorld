@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills">
+  <meta name="description" content="EvoWorld routes modular embodied skills through a world model and a VLM diagnosis loop.">
+  <meta name="keywords" content="EvoWorld, world models, VLA, robot manipulation, expert routing">
+  <meta name="author" content="Boshi Zhang, Sen Cui, BaoHuaYin, Youyi Kou, Junyu Wu, Zuo Pu, Tao Xue, Zhikang Chen, Shanshan Wei, Min Zhang, Miao Liu, Changshui Zhang, Zhang Tao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EvoWorld">
+  <meta property="og:description" content="World-model-centric self-evolution of modular embodied skills.">
+  <meta property="og:image" content="static/images/teaser.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EvoWorld">
+  <meta name="twitter:description" content="World-model-centric self-evolution of modular embodied skills.">
+  <meta name="twitter:image" content="static/images/teaser.png">
+  <meta name="citation_title" content="EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills">
+  <meta name="citation_author" content="Boshi Zhang">
+  <meta name="citation_author" content="Sen Cui">
+  <meta name="citation_author" content="BaoHuaYin">
+  <meta name="citation_author" content="Youyi Kou">
+  <meta name="citation_author" content="Junyu Wu">
+  <meta name="citation_author" content="Zuo Pu">
+  <meta name="citation_author" content="Tao Xue">
+  <meta name="citation_author" content="Zhikang Chen">
+  <meta name="citation_author" content="Shanshan Wei">
+  <meta name="citation_author" content="Min Zhang">
+  <meta name="citation_author" content="Miao Liu">
+  <meta name="citation_author" content="Changshui Zhang">
+  <meta name="citation_author" content="Zhang Tao">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="ECCV">
+  <meta name="citation_pdf_url" content="static/pdfs/evoworld.pdf">
+  <title>EvoWorld | ECCV 2026</title>
+  <link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="static/css/style.css?v=20260630e">
+  <script defer src="static/js/main.js?v=20260630e"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="EvoWorld home">
+        <span class="brand-mark">EW</span>
+        <span>EvoWorld</span>
+      </a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#demos">Demos</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="venue">ECCV 2026 Camera Ready</p>
+        <h1>EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills</h1>
+        <p class="tagline">Reusable world dynamics, modular skill routing, and VLM feedback for continual embodied skill improvement.</p>
+        <p class="authors">
+          Boshi Zhang<sup>*1</sup>, Sen Cui<sup>*,&#8225;1</sup>, BaoHuaYin<sup>3</sup>, Youyi Kou<sup>4</sup>, Junyu Wu<sup>5</sup>, Zuo Pu<sup>1</sup>, Tao Xue<sup>1</sup>, Zhikang Chen<sup>2</sup>, Shanshan Wei<sup>1</sup>, Min Zhang<sup>6</sup>, Miao Liu<sup>1</sup>, Changshui Zhang<sup>&#8224;1</sup>, Zhang Tao<sup>&#8224;1</sup>
+        </p>
+        <p class="affiliations">
+          <sup>1</sup>Tsinghua University &nbsp; <sup>2</sup>University of Oxford &nbsp; <sup>3</sup>University of Sussex &nbsp; <sup>4</sup>Beijing Jiaotong University &nbsp; <sup>5</sup>Xiamen University &nbsp; <sup>6</sup>East China Normal University
+        </p>
+        <p class="author-notes">* Equal contribution. &#8225; Project leader. &#8224; Corresponding authors.</p>
+        <div class="button-row" aria-label="Project links">
+          <a class="button primary" href="static/pdfs/evoworld.pdf" target="_blank" rel="noreferrer">Paper</a>
+          <a class="button" href="#citation">BibTeX</a>
+          <a class="button" href="https://github.com/DocZbs/EvoWorld">Code</a>
+        </div>
+        <figure class="hero-figure">
+          <img src="static/images/teaser.png" alt="EvoWorld motivation and system overview">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section compact-section" id="abstract">
+      <div class="container narrow">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Abstract</p>
+          <h2>A modular route to self-evolving embodied skills.</h2>
+        </div>
+        <div class="abstract-card">
+          <p>Current progress in physical intelligence largely relies on scaling monolithic Vision-Language-Action models, yet real-world policy data remain fragmented across scenes and tasks. EvoWorld addresses this mismatch with a modular framework that shares world dynamics while routing specialized skills.</p>
+          <p>In EvoWorld, VLAs form an expandable library of pluggable experts. A router selects experts conditioned on scene and task, an action-conditioned video world model provides counterfactual rollouts, and a VLM evaluator returns semantic scores plus diagnostic tags. The loop updates the world model, router memory, or selected experts without global retraining.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact-section" id="method">
+      <div class="container">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Method</p>
+          <h2>Ground, route, imagine, diagnose.</h2>
+        </div>
+        <figure class="figure">
+          <img src="static/images/method.png" alt="EvoWorld method pipeline">
+          <figcaption>Task generation, contextual scene anchoring, skill routing, world-model rollout, and VLM diagnosis.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section compact-section" id="results">
+      <div class="container">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Consistent gains across policies and task families.</h2>
+        </div>
+
+        <div class="experiment-overview" aria-label="Experiment coverage">
+          <div class="experiment-card">
+            <span>Setup</span>
+            <strong>5 skill families</strong>
+            <p>Pick-and-place, tool-use, reorientation, deformable manipulation, and articulation.</p>
+          </div>
+          <div class="experiment-card">
+            <span>Policies</span>
+            <strong>4 VLA backbones</strong>
+            <p>Base policies are compared with routed EvoWorld variants under matched splits.</p>
+          </div>
+          <div class="experiment-card">
+            <span>Generation</span>
+            <strong>Diversity + fidelity</strong>
+            <p>Task language, scene embeddings, FID/FVD, and temporal consistency are evaluated.</p>
+          </div>
+          <div class="experiment-card">
+            <span>Hardware</span>
+            <strong>Franka validation</strong>
+            <p>Five real-robot tasks with 20 trials per task test transfer beyond imagined rollouts.</p>
+          </div>
+        </div>
+
+        <div class="table-wrap result-table">
+          <table>
+            <caption>Policy success rates across five representative skill families and four VLA backbones. EvoW* denotes our method.</caption>
+            <thead>
+              <tr>
+                <th>Backbone</th>
+                <th>Setting</th>
+                <th>S1</th>
+                <th>S2</th>
+                <th>S3</th>
+                <th>S4</th>
+                <th>S5</th>
+                <th>Avg</th>
+                <th>Gain</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="2">GR00T-N1.6</td>
+                <td>Base</td>
+                <td>0.38</td>
+                <td>0.24</td>
+                <td>0.18</td>
+                <td>0.28</td>
+                <td>0.20</td>
+                <td>0.256</td>
+                <td>--</td>
+              </tr>
+              <tr class="ours-row">
+                <td>EvoW*</td>
+                <td>0.48</td>
+                <td>0.50</td>
+                <td>0.46</td>
+                <td>0.42</td>
+                <td>0.48</td>
+                <td>0.468</td>
+                <td>+82.8%</td>
+              </tr>
+              <tr>
+                <td rowspan="2">PI-0.5</td>
+                <td>Base</td>
+                <td>0.32</td>
+                <td>0.14</td>
+                <td>0.24</td>
+                <td>0.18</td>
+                <td>0.28</td>
+                <td>0.232</td>
+                <td>--</td>
+              </tr>
+              <tr class="ours-row">
+                <td>EvoW*</td>
+                <td>0.48</td>
+                <td>0.28</td>
+                <td>0.38</td>
+                <td>0.44</td>
+                <td>0.48</td>
+                <td>0.412</td>
+                <td>+77.6%</td>
+              </tr>
+              <tr>
+                <td rowspan="2">PI-0</td>
+                <td>Base</td>
+                <td>0.40</td>
+                <td>0.22</td>
+                <td>0.26</td>
+                <td>0.32</td>
+                <td>0.22</td>
+                <td>0.284</td>
+                <td>--</td>
+              </tr>
+              <tr class="ours-row">
+                <td>EvoW*</td>
+                <td>0.62</td>
+                <td>0.38</td>
+                <td>0.40</td>
+                <td>0.40</td>
+                <td>0.50</td>
+                <td>0.460</td>
+                <td>+62.0%</td>
+              </tr>
+              <tr>
+                <td rowspan="2">PI-0-fast</td>
+                <td>Base</td>
+                <td>0.38</td>
+                <td>0.18</td>
+                <td>0.26</td>
+                <td>0.24</td>
+                <td>0.26</td>
+                <td>0.264</td>
+                <td>--</td>
+              </tr>
+              <tr class="ours-row">
+                <td>EvoW*</td>
+                <td>0.66</td>
+                <td>0.38</td>
+                <td>0.44</td>
+                <td>0.36</td>
+                <td>0.42</td>
+                <td>0.452</td>
+                <td>+71.2%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="result-note"><strong>Takeaway.</strong> Averaged over backbones, success rate rises from 0.259 to 0.448 (+18.9 absolute points). Relative gains remain stable across backbones, ranging from +62.0% to +82.8%.</p>
+
+        <div class="result-section-heading">
+          <p class="eyebrow">Skill-Level Performance</p>
+          <h3>Routing gives immediate gains; diagnosis-driven refinement raises later-stage SR.</h3>
+        </div>
+        <div class="figure-grid results-bento">
+          <figure class="figure result-wide">
+            <img src="static/images/sr_stage_heatmaps.png" alt="Stage-wise success-rate heatmaps for base, router, and post-training settings">
+            <figcaption>Stage-wise SR heatmaps: base policies, scene-aware routing, and post-training refinement.</figcaption>
+          </figure>
+          <figure class="figure result-wide">
+            <img src="static/images/policy_improvement.png" alt="Success rate improves over refinement iterations">
+            <figcaption>Iterative updates consistently improve representative task success rates.</figcaption>
+          </figure>
+        </div>
+
+        <div class="result-section-heading">
+          <p class="eyebrow">Long-Horizon and Generation</p>
+          <h3>Cross-skill tasks and rollout quality both improve under EvoWorld.</h3>
+        </div>
+        <div class="figure-grid results-bento">
+          <figure class="figure">
+            <img src="static/images/compositional_radar.png" alt="Compositional long-horizon success rate radar chart">
+            <figcaption>Full and partial success on compositional long-horizon tasks.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="static/images/generative_quality_bars.png" alt="FID and FVD comparison bar chart">
+            <figcaption>FID/FVD comparison against representative world-model baselines.</figcaption>
+          </figure>
+          <figure class="figure result-wide">
+            <img src="static/images/generation_quality.png" alt="Qualitative temporal consistency comparison">
+            <figcaption>Qualitative temporal consistency: object identity and contact progression are better preserved.</figcaption>
+          </figure>
+        </div>
+
+        <div class="result-section-heading">
+          <p class="eyebrow">Task and Scene Diversity</p>
+          <h3>Generated tasks stay diverse while preserving grounded executability.</h3>
+        </div>
+        <div class="table-wrap diversity-table">
+          <table>
+            <caption>Task and scene diversity under executability constraints. Lower is better for similarity metrics; bold marks the best value in each row.</caption>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>EvoW</th>
+                <th>RoboGen</th>
+                <th>Behavior-100</th>
+                <th>RLBench</th>
+                <th>MetaWorld</th>
+                <th>ManiSkill2</th>
+                <th>GenSim</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Number of tasks</td>
+                <td>100</td>
+                <td>106</td>
+                <td>100</td>
+                <td>106</td>
+                <td>50</td>
+                <td>20</td>
+                <td>70</td>
+              </tr>
+              <tr>
+                <td>Task description Self-BLEU</td>
+                <td class="best-cell">0.281</td>
+                <td>0.284</td>
+                <td>0.299</td>
+                <td>0.317</td>
+                <td>0.322</td>
+                <td>0.674</td>
+                <td>0.378</td>
+              </tr>
+              <tr>
+                <td>Task description Sentence-BERT similarity</td>
+                <td>0.312</td>
+                <td class="best-cell">0.165</td>
+                <td>0.210</td>
+                <td>0.200</td>
+                <td>0.263</td>
+                <td>0.194</td>
+                <td>0.288</td>
+              </tr>
+              <tr>
+                <td>Scene image ViT similarity</td>
+                <td>0.337</td>
+                <td class="best-cell">0.193</td>
+                <td>0.389</td>
+                <td>0.375</td>
+                <td>0.517</td>
+                <td>0.332</td>
+                <td>0.717</td>
+              </tr>
+              <tr>
+                <td>Scene image CLIP similarity</td>
+                <td class="best-cell">0.754</td>
+                <td>0.762</td>
+                <td>0.833</td>
+                <td>0.864</td>
+                <td>0.867</td>
+                <td>0.828</td>
+                <td>0.932</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="real-world-panel">
+          <div class="real-world-copy">
+            <p class="eyebrow">Real-World Validation</p>
+            <h3>Franka-arm trials transfer the gains to hardware.</h3>
+            <p>Using GR00T-N1.6, EvoWorld is evaluated on five real-robot tasks with 20 trials per task. Average SR improves from 29% to 70%, and every task improves over the monolithic base policy.</p>
+          </div>
+          <figure class="figure real-world-chart">
+            <img src="static/images/real_world_sr.png" alt="Real-world success-rate comparison between Base and EvoW">
+            <figcaption>Per-task real-world SR over 20 trials per task.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact-section" id="demos">
+      <div class="container">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Demos</p>
+          <h2>Real-robot traces and imagined rollouts.</h2>
+        </div>
+        <div class="demo-board" aria-label="Rollout gallery">
+          <div class="demo-board-header">
+            <span>Real robot evaluation</span>
+            <strong>5 task sequences</strong>
+          </div>
+          <div class="sequence-list">
+            <figure class="sequence-row">
+              <figcaption>Pick on</figcaption>
+              <img src="static/images/demo_real_pick_on.jpg" alt="Real robot pick-on rollout strip">
+            </figure>
+            <figure class="sequence-row">
+              <figcaption>Pick two</figcaption>
+              <img src="static/images/demo_real_pick_two.jpg" alt="Real robot pick-two rollout strip">
+            </figure>
+            <figure class="sequence-row">
+              <figcaption>Open lid</figcaption>
+              <img src="static/images/demo_real_open_lid.jpg" alt="Real robot open-lid rollout strip">
+            </figure>
+            <figure class="sequence-row">
+              <figcaption>Fold towel</figcaption>
+              <img src="static/images/demo_real_fold_towel.jpg" alt="Real robot fold-towel rollout strip">
+            </figure>
+            <figure class="sequence-row">
+              <figcaption>Wipe board</figcaption>
+              <img src="static/images/demo_real_wipe_board.jpg" alt="Real robot wipe-board rollout strip">
+            </figure>
+          </div>
+
+          <div class="demo-board-header secondary">
+            <span>World-model rollouts</span>
+            <strong>Generated temporal traces</strong>
+          </div>
+          <div class="imagined-strip" aria-label="Scrollable generated rollout gallery">
+            <figure class="imagined-card">
+              <img src="static/images/demo_gen_pick_place.jpg" alt="Generated pick-and-place rollout strip">
+              <figcaption>Pick and place</figcaption>
+            </figure>
+            <figure class="imagined-card">
+              <img src="static/images/demo_gen_reorient.jpg" alt="Generated reorientation rollout strip">
+              <figcaption>Reorient</figcaption>
+            </figure>
+            <figure class="imagined-card">
+              <img src="static/images/demo_gen_fold.jpg" alt="Generated fold rollout strip">
+              <figcaption>Fold</figcaption>
+            </figure>
+            <figure class="imagined-card">
+              <img src="static/images/demo_world_model_rollout.jpg" alt="World-model temporal rollout strip">
+              <figcaption>Temporal rollout</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact-section" id="citation">
+      <div class="container narrow">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>BibTeX</h2>
+        </div>
+        <div class="citation-box">
+          <button class="copy-button" type="button" data-copy-target="bibtex">Copy</button>
+          <pre id="bibtex">@inproceedings{zhang2026evoworld,
+  title={EvoWorld: A World-Model-Centric Framework for Continuous Self-Evolution of Modular Embodied Skills},
+  author={Boshi Zhang and Sen Cui and {BaoHuaYin} and Youyi Kou and Junyu Wu and Zuo Pu and Tao Xue and Zhikang Chen and Shanshan Wei and Min Zhang and Miao Liu and Changshui Zhang and {Zhang Tao}},
+  booktitle={European Conference on Computer Vision},
+  year={2026}
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>EvoWorld - ECCV 2026.</p>
+    </div>
+  </footer>
+</body>
+</html>

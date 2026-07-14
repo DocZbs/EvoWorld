@@ -1,0 +1,24 @@
+795709_EvoWorld_final_manuscript.zip
+Springer_Meteor_795709_package/
+
+# Local-only agent worktrees and durable execution ledger.
+.worktrees/
+.superpowers/
+
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+runs/
+checkpoints/
+outputs/
+.env
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.mp4
+*.webm
+*.gif

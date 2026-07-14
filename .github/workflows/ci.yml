@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked --extra dev
+      - run: |
+          uv run pytest -m 'not backend'
+          uv run ruff check .
+          uv run ruff format --check src training integrations scripts tests
+          uv run mypy src training integrations
+          uv run evoworld validate --config configs/dry_run.toml
+          uv run evoworld run --config configs/dry_run.toml --rounds 1
