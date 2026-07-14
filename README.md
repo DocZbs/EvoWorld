@@ -14,6 +14,7 @@
   <a href="https://doczbs.github.io/EvoWorld/"><img src="https://img.shields.io/badge/Project-Page-244a68" alt="Project page"></a>
   <a href="https://eccv.ecva.net/virtual/2026/poster/5417"><img src="https://img.shields.io/badge/ECCV_2026-Poster-b18a45" alt="ECCV 2026 paper and poster"></a>
   <a href="https://doczbs.github.io/EvoWorld/#film"><img src="https://img.shields.io/badge/Watch-Research_Film-244a68" alt="Watch the research film"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-238636" alt="License: MIT"></a>
   <a href="https://doczbs.github.io/EvoWorld/#demos"><img src="https://img.shields.io/badge/Explore-Demos-244a68" alt="World-model and real-robot demos"></a>
 </p>
 
@@ -130,6 +131,10 @@ site/          Project page, figures, videos, and paper
 The public repository provides deterministic orchestration, pinned upstream submodules, backend bridges, and data contracts. Private trajectories, annotations, trained weights, projector calibration, and robot control code are not included.
 
 Real training and closed-loop execution require operator-provided data, checkpoints, calibration, robot infrastructure, and safety controls. The public Qwen3-VL training configuration is a configurable baseline, not the exact private recipe used for the reported experiments.
+
+## 📄 License
+
+EvoWorld’s original code is released under the [MIT License](LICENSE). Third-party submodules, datasets, and model weights remain subject to their respective licenses.
 
 ## 📚 Citation
 
